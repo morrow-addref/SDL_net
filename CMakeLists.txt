@@ -104,7 +104,7 @@ endif()
 set(PC_LIBS)
 set(PC_REQUIRES)
 
-add_library(${sdl3_net_target_name} src/SDL_net.c)
+add_library(${sdl3_net_target_name} src/SDL_net.c src/SDL_net_extended.c)
 add_library(SDL3_net::${sdl3_net_target_name} ALIAS ${sdl3_net_target_name})
 set_property(TARGET ${sdl3_net_target_name} PROPERTY C_STANDARD 99)
 if(NOT TARGET SDL3_net::SDL3_net)
