@@ -1351,7 +1351,7 @@ NET_DatagramSocket *NET_CreateDatagramSocket(NET_Address *addr, Uint16 port)
     int zero = 0;
     setsockopt(sock->handle, IPPROTO_IPV6, IPV6_V6ONLY, (const char *) &zero, sizeof (zero));  // if this fails, oh well.
 
-    int bufSize = 1000000;
+    int bufSize = 1048000;
     setsockopt(sock->handle, SOL_SOCKET, SO_RCVBUF, (const char *) &bufSize, sizeof (bufSize));
     setsockopt(sock->handle, SOL_SOCKET, SO_SNDBUF, (const char *) &bufSize, sizeof (bufSize));
 
