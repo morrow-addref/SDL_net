@@ -2075,6 +2075,10 @@ NET_DatagramSocket *NET_CreateDatagramSocket(NET_Address *addr, Uint16 port, SDL
         setsockopt(handle, SOL_SOCKET, SO_REUSEADDR, (const char *) &reuseaddr, sizeof (reuseaddr));
         setsockopt(handle, SOL_SOCKET, SO_BROADCAST, (const char *) &bcast, sizeof (bcast));
 
+        int bufSize = 1048000;
+        setsockopt(handle, SOL_SOCKET, SO_RCVBUF, (const char *) &bufSize, sizeof (bufSize));
+        setsockopt(handle, SOL_SOCKET, SO_SNDBUF, (const char *) &bufSize, sizeof (bufSize));
+
         if (ainfo->ai_family == AF_INET6) {
             const int one = 1;
             setsockopt(handle, IPPROTO_IPV6, IPV6_V6ONLY, (const char *) &one, sizeof (one));  // if this fails, oh well.
